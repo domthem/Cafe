@@ -158,7 +158,7 @@ Néanmoins la modélisation par classification est faite à partir des 14 compos
 4 classifieurs sont testés : SVC , KNeighbors ,XGBClassifier ,RandomForestClkassifier avec dans chaque cas un processus de type GridSearchCV pour optimiser les hyperparamètres.
 Les principales métriques d’évaluation des modèles sont regroupés en quatre graphiques [café_3_graphe6].
 -Les 4 modèles ont des score test ( = accuracy ) similaires , SVC étant légèrement au dessus des autres
--Les 2 modèles XGBClassifier et RandomForestClassifier ( basés sur des arbres de décision) présentent un fort sur-appentissage
+-Les 2 modèles XGBClassifier et RandomForestClassifier ( basés sur des arbres de décision) présentent un fort sur-apprentissage
 
 -Le paramètre précision prend la même valeur pour les 4 modèles sur chacune des 2 classes.Il est putôt mauvais pour la classe 1
 
