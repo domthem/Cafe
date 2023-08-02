@@ -20,7 +20,7 @@ Il s’agit ici d’extraire la liste des qualificatifs utilisés dans la conclu
       
 Résultats de l'analyse de données de la base “sélection_café”
 ------------------------------------------------------------
-1- Distribution des variables
+**1- Distribution des variables**
 
 a- variables quantitatives [café_2_graphe1]
 
@@ -43,7 +43,7 @@ On note que le taux de torréfaction de niveau Médium-Light a tendance à augme
 Il y a 6 niveaux de torréfaction Very-Dark ,Dark, Medium-Dark ,Medium, Medium-Light, Light , mais avec seulement 4 cafés dans les deux premiers niveaux
 
 
-2- Relations entre variables
+**2- Relations entre variables**
 
 a- entre  variables quantitatives:
 
@@ -65,26 +65,26 @@ L’analyse porte , suite aux conclusions des statistiques descriptives sur les 
 Les intervalles de confiance à 95% sur les proportions sont calculés selon une loi de distribution binomiale et les tests de comparaison entre proportions font intervenir une loi hypergéométrique (hypothèse H0 : les proportions sont égales)
 
 en fonction des années [café_2_graphe9]:
-  3 années ont une proportion nulle 
-  3 années , 2009,2007 et 2017 présentent une proportion>94 significativement supérieure à la moyenne de 40.5% [café_2_tabl2]
+  -3 années ont une proportion nulle 
+  -3 années , 2009,2007 et 2017 présentent une proportion>94 significativement supérieure à la moyenne de 40.5% [café_2_tabl2]
 
 en fonction des pays d’origine [café_2_graphe10] : 
-  3 pays ont une proportion nulle 
-  3 pays sont significativement  au-dessus  : Tanzanie,Panama , Kenya .[café_2_tabl3]
+ - 3 pays ont une proportion nulle 
+  -3 pays sont significativement  au-dessus  : Tanzanie,Panama , Kenya .[café_2_tabl3]
 
 en fonction des pays de torréfaction [café_2_graphe11]: 
-  16 pays ont une proportion nulle
-  3 pays sont significativement  au-dessus de la moyenne : Kansas, Massachusetts, Hawaii [café_2_tabl4] 
+  -16 pays ont une proportion nulle
+  -3 pays sont significativement  au-dessus de la moyenne : Kansas, Massachusetts, Hawaii [café_2_tabl4] 
 
 en fonction des niveaux de torréfaction [café_2_graphe12] : 
-  2 modalités Very Dark et Dark avec  proportion nulle
-  1 modalité est  significativement  au-dessus de la moyenne : Medium [café_2_tabl5]
+ - 2 modalités Very Dark et Dark avec  proportion nulle
+ - 1 modalité est  significativement  au-dessus de la moyenne : Medium [café_2_tabl5]
 
 
 Croisement avec les données de productions 
 ------------------------------------------
 
-1- description des  données de production
+**1- description des  données de production**
 
 Quelques retraitements de la base de données de la FAO ont été faits:
 -  cas de la Chine : de manière étonnante la base contient 3 lignes :"China" , "China,mainland" et "China, Taiwan Province of" , la ligne “China “ étant la somme des deux autres .On a supprimé la ligne “China” originale , changé "China,mainland" en “China” et rebaptisé la troisième ligne “Taiwan”
@@ -103,7 +103,7 @@ Les producteurs significatifs (> 50 milliers de tonnes en 2021 ) avec la plus fo
       Nicaragua : + 180%  ,168 milliers de tonnes en 2021
       Viet Nam : + 164%  ,1845 milliers de tonnes en 2021
 
-2-croisement avec la sélection de café
+**2-croisement avec la sélection de café**
 
 Un indicateur défini par 1000* nombre de cafés dans la sélection/production sur 20 ans est introduit à l’échelle de chaque pays d’origine [café2_graphe16][café2_graphe17]
 La médiane de cet indicateur est 9 , la valeur du 1er quartile est 3 , la valeur du 3ème quartile est 46.
@@ -120,7 +120,7 @@ Le cas de Hawaii interroge : sur 20 ans , 70 cafés intègrent la Top-review alo
 Analyse de texte
 ----------------
 
-1- principe de l’analyse
+**1- principe de l’analyse**
 
 Le texte analysé est le texte de la conclusion de chacune des dégustations.
 Le processus est itératif avec un enrichissement des mots filtrés pour retirer  le plus possible de mots sans sens pour la qualification du café , par exemple des mots généraux comme “coffee” ,”cup”, “bean” ,”expresso” , certains adverbes comme “very” ,”almost” .., les mots en relation avec l’origine ou la torréfaction du café ( informations connues par ailleurs) , la ponctuation, les mots de liaison.
@@ -132,7 +132,7 @@ Le processus est à compléter , en effet certains des mots distincts de la list
 On les regroupe pour obtenir une liste de qualificatifs , aux sens disjoints.A la fin il reste 1805 qualificatifs uniques pour un ensemble de 12493 valeurs (A noter : les techniques automatiques de racinisation ou lemnisation n'ont pas permis d'obtenir le résultat souhaité)
 
 
-2-résultats de l’analyse
+**2-résultats de l’analyse**
 
 a-distribution des fréquences des qualificatifs 
 
@@ -147,7 +147,7 @@ b-lien entre les qualificatifs
 Il y a bien des corrélations significatives (test de pearsonr ) entre certains qualificatifs mais les coefficients de corrélation ne dépassent pas 0.30 [café_3_tabl1]
 
 
-3-liens avec la classe de cotation
+**3-liens avec la classe de cotation**
 
 On se propose de regarder si on peut faire une prédiction de la classe de cotation ( 1 = cotation >94 , 0 = cotation =94) à partir des 20 qualificatifs les plus fréquents .
 
