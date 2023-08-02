@@ -22,14 +22,14 @@ Résultats de l'analyse de données de la base “sélection_café”
 ------------------------------------------------------------
 **1- Distribution des variables**
 
-a- variables quantitatives [café_2_graphe1]
+*a- variables quantitatives [café_2_graphe1]*
 
 Les principales variables sont la cotation (échelle de 0 à 100) , la note d’arôme , la note de saveur et la note de corps ( échelle de 0 à 10 pour les trois)  Les distributions de ces variables sont très resserrées du fait qu’il s’ agit d’une sélection des meilleurs cafés .
 
 La distribution de la cotation , bien que tronquée à 94 par construction , est la plus étalée avec 934 cafés sur 1570 cafés pur origine à la valeur 94 , soit  59% .On pourra dans la suite s’intéresser à la portion de café de cotation > 94.
 Les 3 autres variables ont pour mode la valeur 9 avec selon le cas de 83% à 91% de fréquence.Les valeurs minimales sont 7 ou 8 .Il n’y aura pas beaucoup d’informations à tirer de ces 3 variables.
 
-b- variables catégorielles 
+*b- variables catégorielles*
 
 pays d’origine [café_2_graphe2] : 23  pays d’origine pour les 1570 cafés pur origine.
 L’origine la plus représentée dans cette sélection des meilleurs cafés est l'Ethiopie avec 30% des cafés .
@@ -45,12 +45,12 @@ Il y a 6 niveaux de torréfaction Very-Dark ,Dark, Medium-Dark ,Medium, Medium-L
 
 **2- Relations entre variables**
 
-a- entre  variables quantitatives:
+*a- entre  variables quantitatives*
 
 Comme expliqué plus haut ,il n’ y a rien de particulier à dire.
 
 
-b- entre variables catégorielles :
+*b- entre variables catégorielles*
 
 L’étude des contingences entre les variables catégorielles ,les trois variables du paragraphe précédent auxquelles a été  ajouté l’année de test , montre que toutes les variables sont liées [café_2_tabl1]
 
@@ -59,7 +59,7 @@ Par exemple [café_2_graphe5] : 355 café d’ origine Ethiopie dont 167 torréf
 Ou bien [café_2_graphe6]:sur 361 cafés torréfiés à Taiwan  216 sont de torréfaction Medium-Light , sur 248 cafés torréfiés en Californie 159 sont en Medium-Light .
 
 
-c- entre variables quantitatives et catégorielles 
+*c- entre variables quantitatives et catégorielles* 
 
 L’analyse porte , suite aux conclusions des statistiques descriptives sur les variables quantitatives , sur le lien entre la variable cotation > 94 et les variables catégorielles .Plus précisément on s’intéresse aux variations de la proportion de café de cotation >94 en fonction des modalités des variables catégorielles.
 Les intervalles de confiance à 95% sur les proportions sont calculés selon une loi de distribution binomiale et les tests de comparaison entre proportions font intervenir une loi hypergéométrique (hypothèse H0 : les proportions sont égales)
@@ -134,7 +134,7 @@ On les regroupe pour obtenir une liste de qualificatifs , aux sens disjoints.A l
 
 **2-résultats de l’analyse**
 
-a-distribution des fréquences des qualificatifs 
+*a-distribution des fréquences des qualificatifs* 
 
 Les 20 premiers qualificatifs ont une fréquence cumulée de 5175 [café_3_graphe1]
 Les autres qualificatifs , au nombre de 1785 , ont une fréquence cumulée de 7318
@@ -142,7 +142,7 @@ Les autres qualificatifs , au nombre de 1785 , ont une fréquence cumulée de 73
 Le qualificatif le plus fréquent est “fruity” dont la fréquence est 876 [café_3_graphe2]
 
 
-b-lien entre les qualificatifs
+*b-lien entre les qualificatifs*
 
 Il y a bien des corrélations significatives (test de pearsonr ) entre certains qualificatifs mais les coefficients de corrélation ne dépassent pas 0.30 [café_3_tabl1]
 
