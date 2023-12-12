@@ -27,7 +27,7 @@ Résultats de l'analyse de données de la base “sélection_café”
 Les principales variables sont la cotation (échelle de 0 à 100) , la note d’arôme , la note de saveur et la note de corps ( échelle de 0 à 10 pour les trois)  Les distributions de ces variables sont très resserrées du fait qu’il s’ agit d’une sélection des meilleurs cafés .
 
 La distribution de la cotation , bien que tronquée à 94 par construction , est la plus étalée avec 934 cafés sur 1570 cafés pur origine à la valeur 94 , soit  59% .On pourra dans la suite s’intéresser à la portion de café de cotation > 94.
-Les 3 autres variables ont pour mode la valeur 9 avec selon le cas de 83% à 91% de fréquence.Les valeurs minimales sont 7 ou 8 .Il n’y aura pas beaucoup d’informations à tirer de ces 3 variables.
+Les 4 autres variables ont pour mode la valeur 9 avec selon le cas de 83% à 91% de fréquence.Les valeurs minimales sont 7 ou 8 .
 
 *b- variables catégorielles*
 
@@ -47,8 +47,7 @@ Il y a 6 niveaux de torréfaction Very-Dark ,Dark, Medium-Dark ,Medium, Medium-L
 
 *a- entre  variables quantitatives*
 
-Comme expliqué plus haut ,il n’ y a rien de particulier à dire.
-
+On ne trouve pas de relations particulières entre les variables quantitatives.
 
 *b- entre variables catégorielles*
 
@@ -59,7 +58,15 @@ Par exemple [café_2_graphe5] : 355 café d’ origine Ethiopie dont 167 torréf
 Ou bien [café_2_graphe6]:sur 361 cafés torréfiés à Taiwan  216 sont de torréfaction Medium-Light , sur 248 cafés torréfiés en Californie 159 sont en Medium-Light .
 
 
-*c- entre variables quantitatives et catégorielles* 
+*c- introduction d'une nouvelle variable binaire : cotation >94 vs cotation=94* 
+
+*Relation avec les données quantitatives* 
+
+Cette relation est faite au moyen d'un modèle basé sur un arbre simple de décision (DecisionTreeClassifier).
+On recourt à une validation croisée imbreiquée (nested cross-validation) pour évaluer les meilleurs paramètres de ce modèle.
+Le modèle obtenu appliqué à l'ensemble du jeu de donné a un score (accuracy) de 0.91 [cafe_2_graphe4 à cafe_2_graphe5bis]
+
+*Relation avec les données catégorielles*
 
 L’analyse porte , suite aux conclusions des statistiques descriptives sur les variables quantitatives , sur le lien entre la variable cotation > 94 et les variables catégorielles .Plus précisément on s’intéresse aux variations de la proportion de café de cotation >94 en fonction des modalités des variables catégorielles.
 Les intervalles de confiance à 95% sur les proportions sont calculés selon une loi de distribution binomiale et les tests de comparaison entre proportions font intervenir une loi hypergéométrique (hypothèse H0 : les proportions sont égales)
@@ -122,51 +129,19 @@ Analyse de texte
 
 **1- principe de l’analyse**
 
-Le texte analysé est le texte de la conclusion de chacune des dégustations.
+Le texte analysé est le texte du jugement de chacune des dégustations ("blind assessment").
 Le processus est itératif avec un enrichissement des mots filtrés pour retirer  le plus possible de mots sans sens pour la qualification du café , par exemple des mots généraux comme “coffee” ,”cup”, “bean” ,”expresso” , certains adverbes comme “very” ,”almost” .., les mots en relation avec l’origine ou la torréfaction du café ( informations connues par ailleurs) , la ponctuation, les mots de liaison.
 
-Après cette première opération, il reste au total 12500 mots répartis sur  1965 valeurs distinctes.
-
-Le processus est à compléter , en effet certains des mots distincts de la liste finale recouvrent des sens très proches ou sont de même racine.Par exemple : floral , florals , flowers  ou fruit , fruit-toned  etc
-
-On les regroupe pour obtenir une liste de qualificatifs , aux sens disjoints.A la fin il reste 1805 qualificatifs uniques pour un ensemble de 12493 valeurs (A noter : les techniques automatiques de racinisation ou lemnisation n'ont pas permis d'obtenir le résultat souhaité)
+On obtient une liste de 29404 qualificatifs réparts sur 1072 valeurs uniques
 
 
 **2-résultats de l’analyse**
 
 *a-distribution des fréquences des qualificatifs* 
 
-Les 20 premiers qualificatifs ont une fréquence cumulée de 5175 [café_3_graphe1]
-Les autres qualificatifs , au nombre de 1785 , ont une fréquence cumulée de 7318
+Les 50 premiers qualificatifs ont une fréquence cumulée de 19182 [café_3_graphe2]
+Les autres qualificatifs , au nombre de 1020 , ont une fréquence cumulée de 10122
 
-Le qualificatif le plus fréquent est “fruity” dont la fréquence est 876 [café_3_graphe2]
-
-
-*b-lien entre les qualificatifs*
-
-Il y a bien des corrélations significatives (test de pearsonr ) entre certains qualificatifs mais les coefficients de corrélation ne dépassent pas 0.30 [café_3_tabl1]
-
-
-**3-liens avec la classe de cotation**
-
-On se propose de regarder si on peut faire une prédiction de la classe de cotation ( 1 = cotation >94 , 0 = cotation =94) à partir des 20 qualificatifs les plus fréquents .
-
-Dans une phase intermédiaire ,il est procédé à une tentative de réduction de dimensions à partir d’une analyse ACP. Le résultat est plutôt décevant parce qu'il faut conserver 14 composantes pour cumuler 80% de variance expliquée [café_3_graphe4]
-
-Néanmoins la modélisation par classification est faite à partir des 14 composantes principales conservées.
-
-4 classifieurs sont testés : SVC , KNeighbors ,XGBClassifier ,RandomForestClkassifier avec dans chaque cas un processus de type GridSearchCV pour optimiser les hyperparamètres.
-Les principales métriques d’évaluation des modèles sont regroupés en quatre graphiques [café_3_graphe6].
--Les 4 modèles ont des score test ( = accuracy ) similaires , SVC étant légèrement au dessus des autres
--Les 2 modèles XGBClassifier et RandomForestClassifier ( basés sur des arbres de décision) présentent un fort sur-apprentissage
-
--Le paramètre précision prend la même valeur pour les 4 modèles sur chacune des 2 classes.Il est putôt mauvais pour la classe 1
-
--Le paramètre recall montre par contre une grosse disparité pour les 2 classes 
-Le recall de la classe 1 reste très mauvais , il y a peu de vrais positifs et beaucoup de faux négatifs.XGB fait un peu mieux que les autres sur la classe 1 , mais inversement XGB est moins bon sur le recall de la classe 0.
-
-En conclusion, les modèles de classifications testés ici ne sont pas très bons.
-
-Nous proposons deux graphes d'illustration des matrices de confusion , modèles SVC et XGBClassifier. [café_3_graphe7][café_3_graphe8]
+Le qualificatif le plus fréquent est “sweet” dont la fréquence approche 1600 [café_3_graphe1]
 
 
